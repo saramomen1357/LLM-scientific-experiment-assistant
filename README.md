@@ -1,59 +1,105 @@
 🚀 LLM Scientific Experiment Assistant
-A modular, research-oriented system for numerical analysis, traffic policy evaluation, and transfer-learning reasoning using a local LLM (Ollama).
-📌 1. Introduction
 
-This project demonstrates how a locally-run Large Language Model (LLM) (via Ollama) can be used as a structured scientific reasoning engine—not as a chatbot, but as an integrated component inside a computational workflow.
+A modular, research-oriented system for numerical analysis, traffic policy evaluation, and transfer-learning interpretation using a locally-run LLM (Ollama).
+
+Author: Sara Momen
+
+🧭 1. Introduction
+
+This project demonstrates how a locally-hosted Large Language Model (LLM), executed via Ollama, can be integrated into scientific workflows as a structured reasoning engine, rather than a chatbot.
 
 The system performs three research-relevant tasks:
 
-Numerical Method Analysis — Evaluate stability, convergence, and accuracy of ODE solvers (Euler vs RK4).
+🔢 Numerical Method Analysis
 
-Traffic Policy Evaluation — Analyze traffic signal control experiments (digital-twin style) using structured LLM reasoning.
+Evaluates ODE solvers (Euler vs RK4) with respect to:
 
-Transfer Learning Interpretation — Analyze domain shifts in autonomous-driving perception and propose transfer-learning strategies.
+stability
 
-The project satisfies class requirements while also acting as a research-quality demonstration aligned with PhD topics in:
+convergence
 
-Autonomous driving
+accuracy
+
+🚦 Traffic Policy Evaluation
+
+Performs digital-twin–style reasoning on experimental traffic signal data:
+
+congestion interpretation
+
+delay comparison
+
+optimal policy selection
+
+🤖 Transfer Learning Interpretation
+
+Analyzes domain shifts for autonomous-driving sensor data and proposes:
+
+adaptation strategies
+
+robustness techniques
+
+transfer-learning methodologies
+
+🎯 Why This Project Matters (PhD Relevance)
+
+This system directly aligns with research areas in:
+
+Autonomous driving & ADAS
 
 Traffic simulation and digital twins
 
 Optimization & numerical analysis
 
-Transfer learning & computer vision
+Domain adaptation / transfer learning
 
 LLMs as scientific assistants
 
+Sensor robustness & computer vision
+
+It showcases skills required for top doctoral programs, including:
+
+scientific reasoning with LLMs
+
+modular tool-building
+
+numerical computing
+
+structured analysis & reproducibility
+
 🧠 2. System Architecture
-           +------------------------+
-           |   User Input (.txt)    |
-           +-----------+------------+
-                       |
-                       v
-       +---------------+------------------+
-       |   Preprocessing & Prompt Builder |
-       +---------------+------------------+
-                       |
-                       v
-           +-----------+-----------+
-           |  Local LLM via Ollama |
-           | (llama3 or others)    |
-           +-----------+-----------+
-                       |
-        JSON Validation & Error Handling
-                       |
-                       v
-           +-----------+-----------+
-           |  Module-Specific Logic |
-           +-----------+-----------+
-                       |
-                       v
-           +------------------------+
-           | Markdown Reports (.md) |
-           +------------------------+
++-----------------------------+
+|        User Input (.txt)    |
++--------------+--------------+
+               |
+               v
++-----------------------------+
+|  Preprocessing + Prompting  |
++--------------+--------------+
+               |
+               v
++-----------------------------+
+|  Local LLM via Ollama       |
+|  (llama3 or compatible)     |
++--------------+--------------+
+               |
+               v
++-----------------------------+
+| JSON Parsing + Validation   |
++--------------+--------------+
+               |
+               v
++-----------------------------+
+|   Numerical / Policy /      |
+|   Transfer Modules          |
++--------------+--------------+
+               |
+               v
++-----------------------------+
+|  Markdown Research Reports  |
++-----------------------------+
 
 
-Each module is independent and designed for research workflows.
+Each module is independent, reusable, and research-oriented.
 
 📂 3. Repository Structure
 llm-scientific-experiment-assistant/
@@ -69,6 +115,7 @@ llm-scientific-experiment-assistant/
 │   ├── numerical_result.md
 │   ├── policy_result.md
 │   ├── transfer_result.md
+│   ├── numerical_output_raw.txt
 │
 ├── src/
 │   ├── main.py
@@ -82,163 +129,161 @@ llm-scientific-experiment-assistant/
 🔧 4. Installation
 1️⃣ Install Ollama
 
-Download Ollama:
+Download:
 https://ollama.com/download
 
-Then pull a model:
+Pull a model:
 
 ollama pull llama3
 
-2️⃣ Create a virtual environment
+2️⃣ Create & Activate a Virtual Environment
 python -m venv .venv
 
 
-Activate (PowerShell):
+PowerShell:
 
 . .venv/Scripts/activate
 
-3️⃣ Install dependencies
+3️⃣ Install Dependencies
 pip install -r requirements.txt
 
 ▶️ 5. Usage
-Run Transfer Learning Analysis
+Transfer Learning Module
 python src/main.py --mode transfer --input data/transfer_input.txt
 
-Run Numerical Stability/Accuracy Analysis
+Numerical Method Analysis
 python src/main.py --mode numerical --input data/numerical_input.txt
 
-Run Traffic Policy Evaluation
+Traffic Policy Evaluation
 python src/main.py --mode policy --input data/policy_input.txt
 
 
-All results are saved into:
+All reports are saved in:
 
 outputs/
 
-📊 6. Module Summaries
-🔢 A. Numerical Module — Euler vs RK4 Analysis
+📊 6. Module Overviews
+🔢 A. Numerical Module — Stability & Convergence Analysis
 
-This module:
+The module:
 
-loads a CSV of solver outputs
+loads numerical experiment CSVs
 
-sends them to the LLM for interpretation
+prompts the LLM to analyze errors
 
-extracts structured fields (best method, convergence, stability, LaTeX bullets)
+extracts structured JSON fields
 
-produces a Markdown research summary
+outputs LaTeX-ready formulas
 
-Research Relevance:
+generates Markdown summaries
 
-✔ Numerical analysis
-✔ Optimization & PDE reasoning
-✔ Interpretable scientific workflow
+Research Relevance
+
+Numerical optimization
+
+Convergence analysis (Euler vs RK4)
+
+PDE solver reasoning
+
+Foundational methods for scientific computing
 
 🚦 B. Policy Evaluation Module — Traffic Signal Optimization
 
-This module:
+The module:
 
-loads experiment data for multiple traffic signal policies
+samples synthetic traffic data
 
-LLM interprets congestion, delay trends, throughput
+compares policies (cycle times, delay, congestion)
 
-outputs a research-style analysis
+interprets performance via the LLM
 
-identifies the best-performing traffic policy
+outputs recommendations
 
-Research Relevance:
+Research Relevance
 
-✔ Traffic simulation
-✔ Autonomous driving
-✔ Digital twin analytics
-✔ Policy evaluation / optimization
+Traffic flow optimization
 
-🤖 C. Transfer Learning Module — Autonomous Driving Sensor Shift
+Digital twins / SUMO-style reasoning
 
-This module:
+Infrastructure-aware autonomous driving
 
-analyzes domain shift between sensor modalities
+Policy evaluation & reinforcement strategy design
 
-proposes transfer learning strategies (fine-tuning, augmentation, DA)
+🤖 C. Transfer Learning Module — Domain Shift in AV Perception
 
-explains relevance to self-driving systems
+The module:
 
-Research Relevance:
+interprets sensor observations
 
-✔ Computer vision
-✔ Sensor fusion
-✔ Transfer learning
-✔ Robust autonomous perception
+reasons about domain shifts
 
-📘 7. Example Output
+proposes actionable transfer-learning strategies
 
-Example (abridged):
+Research Relevance
 
-# Transfer Learning Analysis (LLM-Assisted)
+Robustness in autonomous vision systems
 
-Model used: llama3
+Domain adaptation
 
-## Raw JSON Output
+Cross-sensor policy evaluation
+
+Vision-based mobility optimization
+
+📘 7. Example Research Output (Abridged)
+Transfer Learning (LLM-Assisted)
 {
   "domain_shift_description": "...",
   "transfer_strategy": ["fine-tuning", "augmentation"],
   "autonomous_driving_relevance": "..."
 }
 
-## Structured Summary
-| field | value |
-|-------|--------|
-| domain_shift_description | ... |
-| transfer_strategy | ... |
-| autonomous_driving_relevance | ... |
 
+Markdown report includes:
 
-All modules generate similar Markdown files suitable for a research logbook.
+raw JSON
 
-🔬 8. Research Relevance Summary
+structured table
 
-This project highlights five major competencies expected in top mobility research labs:
+interpretive commentary
 
-✔ Numerical Methods
+This format matches the expectations of:
 
-(RK4/Euler accuracy, stability, convergence)
+research notebooks
 
-✔ Optimization & Policy Evaluation
+lab documentation
 
-(traffic-delay minimization, digital-twin style experiments)
+reproducible science workflows
 
-✔ Computer Vision & Transfer Learning
+🔬 8. Research Competency Demonstrated
 
-(domain shift, sensor robustness — key in ADAS/AV labs)
+This project showcases five high-value PhD skills:
 
-✔ Scientific Tool Building
+✔ Numerical Methods & Scientific Computing
 
-Modular, reproducible, automatable experiment assistant.
+Euler/RK4 analysis, error quantification, convergence.
 
-✔ Local LLM Integration
+✔ Optimization & Policy Reasoning
 
-Shows ability to work with constrained offline environments (important for research compute clusters).
+Traffic flow experiments, digital-twin methodology.
+
+✔ Autonomous-Driving Perception
+
+Domain shift, transfer-learning, sensor adaptation.
+
+✔ LLM-Based Scientific Tool Building
+
+Research automation, structured reasoning, reproducibility.
+
+✔ Systems Engineering
+
+Modular architecture, local inference, experiment pipelines.
 
 🏁 9. Conclusion
 
-This project demonstrates how LLMs can be integrated into scientific computing workflows to produce structured, reproducible analyses across:
+This project demonstrates how local LLMs can be transformed into scientific reasoning engines supporting:
 
-numerical ODE solving
+ODE numerical analysis
 
-traffic simulation and optimization
+Traffic policy evaluation
 
-autonomous-driving perception
-
-It is both a class project and a research portfolio artifact suitable for PhD applications in:
-
-Autonomous driving
-
-Optimization
-
-Game theory
-
-Digital twins
-
-Computer vision
-
-Transportation systems
+Transfer learning for autonomous driving
