@@ -1,0 +1,7 @@
+policy,arrival_rate,congestion_level,avg_delay_sec
+A_60s_cycle,10,0.5,35.0
+B_45s_cycle,10,0.4,30.0
+C_30s_cycle,10,0.6,42.0
+A_60s_cycle,6,0.3,22.0
+B_45s_cycle,6,0.25,20.0
+C_30s_cycle,6,0.35,27.0

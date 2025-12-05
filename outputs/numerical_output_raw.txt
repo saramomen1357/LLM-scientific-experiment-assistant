@@ -1,0 +1,8 @@
+[NUMERICAL] ERROR: invalid JSON from LLM
+
+{  
+  "best_method": "RK4",
+  "reason": "...",
+  "observations": [...],
+  ...
+}

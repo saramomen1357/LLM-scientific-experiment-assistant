@@ -1,0 +1,3 @@
+policy_sample.csv
+Urban 4-leg signalized intersection during morning peak hour. Metrics recorded from three signal control strategies.
+Compare the three policies in terms of average delay, travel time, throughput, and queue length. Identify the best overall policy and justify in 2–3 bullet points.

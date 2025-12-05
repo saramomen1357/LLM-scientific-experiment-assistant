@@ -1,0 +1,17 @@
+Classify the following sensor observation into one of the categories:
+["normal_traffic", "congested_traffic", "incident_detected"]
+
+Sensor text:
+"Camera #14 observed vehicles slowing from 45 mph to 7 mph within 3 seconds. 
+A vehicle appears stopped in lane 2. Queue backed up 120 meters."
+
+Task:
+1. Select the correct category.
+2. Explain the classification reasoning.
+3. Output only the category in the first line.
+4. Output a 2-sentence explanation after.
+
+Format example:
+CATEGORY
+Explanation sentence 1.
+Explanation sentence 2.
