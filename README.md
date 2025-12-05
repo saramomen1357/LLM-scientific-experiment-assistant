@@ -1,107 +1,45 @@
 🚀 LLM Scientific Experiment Assistant
-
-A modular, research-oriented system for numerical analysis, traffic policy evaluation, and transfer-learning interpretation using a locally-run LLM (Ollama).
-
 Author: Sara Momen
 
-🧭 1. Introduction
+A modular system that integrates a locally hosted LLM (Ollama) into scientific workflows for:
 
-This project demonstrates how a locally-hosted Large Language Model (LLM), executed via Ollama, can be integrated into scientific workflows as a structured reasoning engine, rather than a chatbot.
+Numerical Method Analysis (Euler vs RK4)
 
-The system performs three research-relevant tasks:
+Traffic Policy Evaluation (signal-cycle performance)
 
-🔢 Numerical Method Analysis
+Transfer Learning Interpretation (domain shift + adaptation strategies)
 
-Evaluates ODE solvers (Euler vs RK4) with respect to:
+The model is used programmatically, not as a chatbot. Each module produces validated JSON and Markdown research reports.
 
-stability
+🧠 1. System Overview
 
-convergence
+This project demonstrates how a local LLM can be integrated into:
 
-accuracy
+numerical experiments
 
-🚦 Traffic Policy Evaluation
+traffic-simulation style evaluations
 
-Performs digital-twin–style reasoning on experimental traffic signal data:
+domain-shift reasoning for autonomous-driving sensors
 
-congestion interpretation
+The LLM acts as a structured reasoning engine inside Python pipelines.
 
-delay comparison
-
-optimal policy selection
-
-🤖 Transfer Learning Interpretation
-
-Analyzes domain shifts for autonomous-driving sensor data and proposes:
-
-adaptation strategies
-
-robustness techniques
-
-transfer-learning methodologies
-
-🎯 Why This Project Matters (PhD Relevance)
-
-This system directly aligns with research areas in:
-
-Autonomous driving & ADAS
-
-Traffic simulation and digital twins
-
-Optimization & numerical analysis
-
-Domain adaptation / transfer learning
-
-LLMs as scientific assistants
-
-Sensor robustness & computer vision
-
-It showcases skills required for top doctoral programs, including:
-
-scientific reasoning with LLMs
-
-modular tool-building
-
-numerical computing
-
-structured analysis & reproducibility
-
-🧠 2. System Architecture
-+-----------------------------+
-|        User Input (.txt)    |
-+--------------+--------------+
-               |
-               v
-+-----------------------------+
-|  Preprocessing + Prompting  |
-+--------------+--------------+
-               |
-               v
-+-----------------------------+
-|  Local LLM via Ollama       |
-|  (llama3 or compatible)     |
-+--------------+--------------+
-               |
-               v
-+-----------------------------+
-| JSON Parsing + Validation   |
-+--------------+--------------+
-               |
-               v
-+-----------------------------+
-|   Numerical / Policy /      |
-|   Transfer Modules          |
-+--------------+--------------+
-               |
-               v
-+-----------------------------+
-|  Markdown Research Reports  |
-+-----------------------------+
+Workflow
+Input (.txt / .csv)
+     ↓
+Prompt Builder
+     ↓
+Ollama (local LLM)
+     ↓
+JSON Parsing + Validation
+     ↓
+Module Logic (Numerical / Policy / Transfer)
+     ↓
+Markdown Output (.md)
 
 
-Each module is independent, reusable, and research-oriented.
+All modules are independent and follow the same pattern.
 
-📂 3. Repository Structure
+📂 2. Repository Structure
 llm-scientific-experiment-assistant/
 │
 ├── data/
@@ -126,164 +64,171 @@ llm-scientific-experiment-assistant/
 │
 └── README.md
 
-🔧 4. Installation
+⚙️ 3. Installation
 1️⃣ Install Ollama
 
-Download:
 https://ollama.com/download
 
-Pull a model:
+Pull a model (example):
 
 ollama pull llama3
 
-2️⃣ Create & Activate a Virtual Environment
+2️⃣ Create virtual environment
 python -m venv .venv
-
-
-PowerShell:
-
 . .venv/Scripts/activate
 
-3️⃣ Install Dependencies
+3️⃣ Install dependencies
 pip install -r requirements.txt
 
-▶️ 5. Usage
-Transfer Learning Module
+▶️ 4. Running the Modules
+A. Transfer Learning Analysis
 python src/main.py --mode transfer --input data/transfer_input.txt
 
-Numerical Method Analysis
+
+Generates:
+
+outputs/transfer_result.md
+
+B. Numerical Method Analysis (Euler vs RK4)
 python src/main.py --mode numerical --input data/numerical_input.txt
 
-Traffic Policy Evaluation
+
+Uses:
+
+data/numerical_sample.csv
+
+
+Outputs:
+
+outputs/numerical_result.md
+
+C. Traffic Policy Evaluation
 python src/main.py --mode policy --input data/policy_input.txt
 
 
-All reports are saved in:
+Uses synthetic or provided CSV:
 
-outputs/
-
-📊 6. Module Overviews
-🔢 A. Numerical Module — Stability & Convergence Analysis
-
-The module:
-
-loads numerical experiment CSVs
-
-prompts the LLM to analyze errors
-
-extracts structured JSON fields
-
-outputs LaTeX-ready formulas
-
-generates Markdown summaries
-
-Research Relevance
-
-Numerical optimization
-
-Convergence analysis (Euler vs RK4)
-
-PDE solver reasoning
-
-Foundational methods for scientific computing
-
-🚦 B. Policy Evaluation Module — Traffic Signal Optimization
-
-The module:
-
-samples synthetic traffic data
-
-compares policies (cycle times, delay, congestion)
-
-interprets performance via the LLM
-
-outputs recommendations
-
-Research Relevance
-
-Traffic flow optimization
-
-Digital twins / SUMO-style reasoning
-
-Infrastructure-aware autonomous driving
-
-Policy evaluation & reinforcement strategy design
-
-🤖 C. Transfer Learning Module — Domain Shift in AV Perception
-
-The module:
-
-interprets sensor observations
-
-reasons about domain shifts
-
-proposes actionable transfer-learning strategies
-
-Research Relevance
-
-Robustness in autonomous vision systems
-
-Domain adaptation
-
-Cross-sensor policy evaluation
-
-Vision-based mobility optimization
-
-📘 7. Example Research Output (Abridged)
-Transfer Learning (LLM-Assisted)
-{
-  "domain_shift_description": "...",
-  "transfer_strategy": ["fine-tuning", "augmentation"],
-  "autonomous_driving_relevance": "..."
-}
+data/policy_sample.csv
 
 
-Markdown report includes:
+Outputs:
 
-raw JSON
+outputs/policy_result.md
 
-structured table
+🔢 5. Numerical Module Details
 
-interpretive commentary
+The numerical module:
 
-This format matches the expectations of:
+Loads numerical experiment CSV (Euler/RK4 values)
 
-research notebooks
+Sends structured prompt to LLM
 
-lab documentation
+Receives JSON with:
 
-reproducible science workflows
+best_method
 
-🔬 8. Research Competency Demonstrated
+reason
 
-This project showcases five high-value PhD skills:
+observations
 
-✔ Numerical Methods & Scientific Computing
+latex_bullets
 
-Euler/RK4 analysis, error quantification, convergence.
+Converts JSON → Markdown table
 
-✔ Optimization & Policy Reasoning
+Saves research-style summary
 
-Traffic flow experiments, digital-twin methodology.
+This enables automated evaluation of ODE solver behavior.
 
-✔ Autonomous-Driving Perception
+🚦 6. Policy Evaluation Module Details
 
-Domain shift, transfer-learning, sensor adaptation.
+The policy module:
 
-✔ LLM-Based Scientific Tool Building
+Loads synthetic traffic experiment data
 
-Research automation, structured reasoning, reproducibility.
+Extracts per-policy:
 
-✔ Systems Engineering
+congestion level
 
-Modular architecture, local inference, experiment pipelines.
+average delay
 
-🏁 9. Conclusion
+arrival rate
 
-This project demonstrates how local LLMs can be transformed into scientific reasoning engines supporting:
+LLM identifies:
 
-ODE numerical analysis
+strongest policy
 
-Traffic policy evaluation
+performance trends
 
-Transfer learning for autonomous driving
+potential improvements
+
+Outputs a Markdown report summarizing the entire experiment.
+
+This mimics traffic-signal comparative evaluation.
+
+🤖 7. Transfer Learning Module Details
+
+This module:
+
+Reads a sensor observation description
+
+LLM classifies scenario
+
+Describes the domain shift
+
+Recommends adaptation strategies:
+
+fine-tuning
+
+augmentation
+
+domain-adversarial training
+
+States how the adaptation affects perception performance
+
+Outputs Markdown with both JSON and structured table.
+
+📘 8. Example Output Format
+
+Example content inside a generated Markdown file:
+
+# Transfer Learning Analysis
+
+**Model:** llama3
+
+## Raw JSON Output
+{ ... }
+
+## Structured Summary
+| field | value |
+|-------|--------|
+| domain_shift_description | ... |
+| transfer_strategy | ... |
+| autonomous_driving_relevance | ... |
+
+
+All modules follow the same format for consistency.
+
+📦 9. Dependencies
+pandas
+requests
+python-dotenv
+tabulate
+
+
+Ollama must be running before use.
+
+🏁 10. Summary
+
+This project provides:
+
+programmatic LLM integration
+
+structured scientific reasoning
+
+numerical experiment evaluation
+
+traffic policy comparison
+
+transfer-learning domain-shift analysis
+
+The system is modular, reproducible, and suitable for automation or extension.
