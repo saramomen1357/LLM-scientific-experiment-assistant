@@ -1,5 +1,4 @@
 🚀 LLM Scientific Experiment Assistant
-Author: Sara Momen
 
 A modular system that integrates a local LLM (Ollama) into scientific workflows for:
 
